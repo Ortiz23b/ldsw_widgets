@@ -1,71 +1,59 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const WidgetsDemo());
+  runApp(MyApp());
 }
 
-class WidgetsDemo extends StatelessWidget {
-  const WidgetsDemo({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LDSW 3.4',
+      title: 'Mi App Flutter',
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Utilización de Widgets'),
-          backgroundColor: Colors.teal,
-          centerTitle: true,
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/fondo.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Texto dentro de un Container
-            Container(
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              decoration: BoxDecoration(
-                color: Colors.teal.shade50,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.teal, width: 2),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.home,
+                size: 80,
+                color: Colors.white,
               ),
-              child: const Text(
-                'Este texto está dentro de un Container',
-                style: TextStyle(fontSize: 18, color: Colors.black87),
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-            // Row con iconos
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Icon(Icons.coffee, color: Colors.brown, size: 40),
-                Icon(Icons.access_time, color: Colors.blueGrey, size: 40),
-                Icon(Icons.favorite, color: Colors.redAccent, size: 40),
-              ],
-            ),
-
-            const SizedBox(height: 30),
-
-            // Stack con contenedores superpuestos
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(width: 130, height: 130, color: Colors.teal.shade100),
-                Container(width: 90, height: 90, color: Colors.teal.shade300),
-                const Text(
-                  'Stack',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
+              SizedBox(height: 20),
+              Text(
+                '¡Bienvenido a mi App!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Hecha con Flutter 💙',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
